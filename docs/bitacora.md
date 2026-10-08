@@ -5,3 +5,8 @@ Para cada acción, decidan por dónde viaja y por qué: pedir entrar, aceptar a 
 Aceptar va por el WebSocket del anfitrión, que ya está abierto y autenticado.
 Los mensajes, por WebSocket: es lo que tiene que llegarle a todos al instante.
 La dirección del túnel, por HTTP: es una pregunta con una respuesta, y se hace una vez.
+
+Ejercicio D1
+Cada callback recibe el webSocket que lo dispara. ¿Qué tendría que comprobar antes de tocar el estado?
+
+- Antes de modificar el estado, debes comprobar que el WebSocket que dispara el callback sea exactamente la conexión actual (if (webSocket !== actual) return). Esto asegura, mediante la comparación de identidad, que los eventos de conexiones anteriores o descartadas se ignoren y no alteren tu interfaz.
